@@ -33,7 +33,10 @@ function App() {
       body: JSON.stringify(product)
     })
 
-    console.log(res)
+    const addedProduct = await res.json()
+    setProducts((prevProducts) => [...prevProducts, addedProduct])
+    setName("")
+    setPrice("")
   }
 
   return (
