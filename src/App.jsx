@@ -5,21 +5,10 @@ import { useFetch } from './hooks/useFetch'
 const url = "http://localhost:3000/products"
 
 function App() {
-  const [products, setProducts] = useState([])
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
-  const { data: items, httpConfig } = useFetch(url)
-
-  // resgatando dados
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const res = await fetch(url)
-  //     const data = await res.json()
-  //     setProducts(data)
-  //   }
-  //   fetchData()
-  // }, [])
+  const { data: items, httpConfig, loading, error } = useFetch(url)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,16 +18,6 @@ function App() {
       price
     }
 
-    // const res = await fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(product)
-    // })
-
-    // const addedProduct = await res.json()
-    // setProducts((prevProducts) => [...prevProducts, addedProduct])
     httpConfig(product, "POST")
     setName("")
     setPrice("")
@@ -46,14 +25,17 @@ function App() {
 
   return (
     <>
-      <h1>Lista de Items</h1>
-      <ul>
+      <h1>Lista de Produtos</h1>
+      {/* loading */}
+      {loading && <p>Carregando dados...</p>}
+      {error && <p>{error}</p>}
+      {!loading && <ul>
         {items && items.map((product) => (
             <li key={product.id}>
               {product.name} - R$: {product.price}
             </li>
         ))}
-      </ul>
+      </ul>}
       <div className="add-product">
         <form onSubmit={handleSubmit}>
           <label>Nome:
@@ -72,10 +54,17 @@ function App() {
               onChange={(e) =>setPrice(e.target.value)}
             />
           </label>
+          { loading &&
+          <input
+            type="submit"
+            disabled
+            value="Aguarde"
+          /> }
+          { !loading &&
           <input
             type="submit"
             value="Criar"
-          />
+          /> }
         </form>
       </div>
     </>

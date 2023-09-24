@@ -14,31 +14,6 @@
       "id": 3,
       "name": "Boné",
       "price": 79.9
-    },
-    {
-      "name": "Eminem",
-      "price": "10000000.00",
-      "id": 4
-    },
-    {
-      "name": "Eminem",
-      "price": "10000000.00",
-      "id": 5
-    },
-    {
-      "name": "Kira",
-      "price": "20.00",
-      "id": 6
-    },
-    {
-      "name": "abajur",
-      "price": "5",
-      "id": 7
-    },
-    {
-      "name": "iate",
-      "price": "50",
-      "id": 8
     }
   ]
 }
