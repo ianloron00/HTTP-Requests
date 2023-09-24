@@ -29,6 +29,16 @@
       "name": "Kira",
       "price": "20.00",
       "id": 6
+    },
+    {
+      "name": "abajur",
+      "price": "5",
+      "id": 7
+    },
+    {
+      "name": "iate",
+      "price": "50",
+      "id": 8
     }
   ]
 }
